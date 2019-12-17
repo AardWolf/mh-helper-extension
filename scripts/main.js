@@ -791,22 +791,23 @@
     }
 
     function getFestiveCometStage(message, response, journal) {
-        if (!response.user.quests.QuestWinterHunt2017) {
+        if (!response.user.quests.QuestWinterHunt2019) {
             return message;
         }
 
-        if (response.user.quests.QuestWinterHunt2017.comet.at_boss === true) {
-            message.stage = "Core";
+        if (response.user.quests.QuestWinterHunt2019.comet.at_boss === true) {
+            message.stage = "Boss";
             return message;
         }
 
-        message.stage = response.user.quests.QuestWinterHunt2017.comet.phase_name;
-        for (var key in response.user.quests.QuestWinterHunt2017.comet.phases) {
-            if (response.user.quests.QuestWinterHunt2017.comet.phases[key].status === "active") {
-                message.stage += ' (' + key.replace(/phase_/, '') + ')';
-                break;
-            }
-        }
+        message.stage = response.user.quests.QuestWinterHunt2019.comet.phase_name;
+        //Commented out, 2019 phases are ordinally named
+        //for (var key in response.user.quests.QuestWinterHunt2019.comet.phases) {
+        //    if (response.user.quests.QuestWinterHunt2019.comet.phases[key].status === "active") {
+        //        message.stage += ' (' + key.replace(/phase_/, '') + ')';
+        //        break;
+        //    }
+        //}
 
         return message;
     }
